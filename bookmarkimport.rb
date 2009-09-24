@@ -14,18 +14,13 @@ bookmarklist = bmfile.find('//bookmark')
 
 bookmarklist.each do |bookmark|
   yjbm = yj.make(:new => :bookmark_item)
-  bookmarklink = bookmark.attributes['href']
-  bookmarktitle = ''
-  bookmarkdesc = ''
+  yjbm.location.set(bookmark.attributes['href'])
   bookmark.each_child do |child|
     if child.name == "title"
-      bookmarktitle = child.content
+        yjbm.name.set(child.content)
     end
     if child.name == "desc"
-      bookmarkdesc = child.content
+      yjbm.comments.set(child.content)
     end
   end
-  yjbm.location.set(bookmarklink)
-  yjbm.name.set(bookmarktitle)
-  yjbm.comments.set(bookmarkdesc)
 end
