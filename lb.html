@@ -17,7 +17,7 @@
 				'easingIn': 'easeInOutBack',
 				'easingOut': 'easeInOutBack',				
 				callbackOnClose: function () {
-					$('#lightbox').show();
+					$('a.lightbox').show();
 				}
 			});
 			$('#lightbox').click( function (){
@@ -33,6 +33,9 @@
 				$('a.lightbox').attr('href', newim);
 				$('#lightbox').unbind();
 				$('#lightbox').jqzoom();
+				$('#lightbox').click( function (){
+					$(this).hide();
+				});				
 			});
 			
 		});
