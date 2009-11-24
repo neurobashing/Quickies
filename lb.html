@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>lightbox</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="fancybox/jquery.fancybox-1.2.5.js" type="text/javascript" charset="utf-8"></script>
+		<script src="jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type='text/javascript' src='zoom/jquery.jqzoom1.0.1.js'></script>
+		<link rel="stylesheet" type="text/css" href="zoom/jqzoom.css" />
+		<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.2.5.css" media="screen" />
+		<script type="text/javascript">
+		$(function () {
+			$('.lightbox').jqzoom();
+			$('a.lightbox').fancybox({
+				'easingIn': 'easeInOutBack',
+				'easingOut': 'easeInOutBack',				
+				callbackOnClose: function () {
+					$('a.lightbox').show();
+				}
+			});
+			$('a.lightbox').click( function (){
+				$(this).hide();
+			});
+		});
+		</script>
+	</head>
+	<body id="lb" onload="">
+		<a href="1.jpg" class='lightbox'><img src='1-thumb.jpg' title='derp'></a>
+	</body>
+</html>
