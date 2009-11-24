@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.2.5.css" media="screen" />
 		<script type="text/javascript">
 		$(function () {
-			$('.lightbox').jqzoom();
+			$('#lightbox').jqzoom();
 			$('a.lightbox').fancybox({
 				'easingIn': 'easeInOutBack',
 				'easingOut': 'easeInOutBack',				
@@ -23,10 +23,28 @@
 			$('a.lightbox').click( function (){
 				$(this).hide();
 			});
+			
+			$('.swapper').click( function () {
+				var origsrc = $('#shower').attr('src');
+				var clicked = $(this).attr('src');
+				$('#shower').attr('src', clicked);
+				$(this).attr('src', origsrc);
+				var newim = clicked.replace(/-thumb/i, '');
+				$('a.lightbox').attr('href', newim);
+				$('#lightbox').unbind();
+				$('#lightbox').jqzoom();
+			});
+			
 		});
 		</script>
 	</head>
 	<body id="lb" onload="">
-		<a href="1.jpg" class='lightbox'><img src='1-thumb.jpg' title='derp'></a>
+		<a href="1.jpg" class='lightbox' id="lightbox"><img src='1-thumb.jpg' id='shower' title='derp'></a>
+		<p>
+		<img src='2-thumb.jpg' title='derp' class='swapper'></a>
+		<img src='3-thumb.jpg' title='derp' class='swapper'></a>
+		<img src='4-thumb.jpg' title='derp' class='swapper'></a>
+		<img src='5-thumb.jpg' title='derp' class='swapper'></a>
+		
 	</body>
 </html>
