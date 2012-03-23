@@ -1,0 +1,18 @@
+@-moz-document regexp('^http://.*.wikipedia.org/.*') {
+    #mw-panel {
+        display: none !important;
+        width: 0px;
+    }
+    #mw-head {
+        display: none !important;
+    }
+    #mw-head-base {
+        height: 0px !important;
+    }
+    #content {
+        margin-left: 0px !important;
+    }
+    p {
+        font-size: 110% !important;
+    }
+}
