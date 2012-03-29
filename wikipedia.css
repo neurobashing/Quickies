@@ -12,6 +12,13 @@
     #content {
         margin-left: 0px !important;
     }
+    #footer {
+        display: none !important;
+        height: 0px !important;
+    }
+    #mw-articlefeedback {
+        display: none !important;
+    }
     p {
         font-size: 110% !important;
     }
