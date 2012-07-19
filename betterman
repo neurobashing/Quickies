@@ -1,0 +1,28 @@
+#!/bin/bash
+
+unset PAGER
+
+if [[ ! "$1" ]]; then
+    echo "argument required: DERP"
+    exit 1
+fi
+
+TMPFILES=~/Library/Caches/Cleanup\ At\ Startup
+if [[ ! -d $TMPFILES ]]; then
+    mkdir ~/Library/Caches/Cleanup\ At\ Startup
+fi
+
+PAGE=$1
+if [ "$PAGE" == "purge" ]; then
+	rm "$TMPFILES"/*.html
+	echo "purged cached man pages."
+	exit 1
+fi
+
+# make a temp file
+# TODO: Ensure the man page exists.
+if [[ ! -e $TMPFILES/$PAGE.html ]]; then
+    /usr/bin/man $PAGE | /usr/local/bin/man2html > "${TMPFILES}"/"${PAGE}".html
+fi
+open "$TMPFILES/$PAGE.html"
+
